@@ -9,6 +9,8 @@ import Rect2 from '~/assets/Rectangle2.svg';
 import { AnnotationItem, annotationsQuery } from '~/queries/annotations';
 import { Annotation } from './Annotation';
 
+export const EditorDimension = 576;
+
 const Background: FC<PropsWithChildren> = ({ children }) => (
   <Box style={{ background: '#1E1E1E', minHeight: 'calc(100vh - 48px)' }}>
     <Box className="mx-auto" style={{ width: 1000 }}>
@@ -79,7 +81,7 @@ export const Editor: React.FC = memo(() => {
       id: UUID,
       author: 'Billy Herrington',
       comment: form.values.message,
-      pos: { x: pos.x / 576, y: pos.y / 576 },
+      pos: { x: pos.x / EditorDimension, y: pos.y / EditorDimension },
     });
     form.reset();
   }, [UUID, add, form, pos.x, pos.y]);
@@ -112,13 +114,13 @@ export const Editor: React.FC = memo(() => {
           Upload Image
         </label>
       </Flex>
-      <Box className="mx-auto" style={{ height: 576, background: '#2A2A2A' }}>
+      <Box className="mx-auto" style={{ height: EditorDimension, background: '#2A2A2A' }}>
         <Box
           id="parent"
           ref={parentRef}
           style={{
-            width: 576,
-            height: 576,
+            width: EditorDimension,
+            height: EditorDimension,
             backgroundImage: `url(${imageUrl})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: '576px 576px',

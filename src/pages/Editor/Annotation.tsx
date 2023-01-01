@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import React, { FC, memo, useState } from 'react';
 import { AnnotationItem, annotationsQuery } from '~/queries/annotations';
 import Trash from '../../assets/Trash.svg';
+import { EditorDimension } from './Editor';
 
 export interface AnnotationProps {
   annotation: AnnotationItem;
@@ -34,8 +35,8 @@ export const Annotation: FC<AnnotationProps> = memo(({ annotation, index, refetc
           onClick={() => setOpened((o) => !o)}
           sx={() => ({
             position: 'absolute',
-            left: `${annotation.pos.x * 576}px`,
-            top: `${annotation.pos.y * 576}px`,
+            left: `${annotation.pos.x * EditorDimension}px`,
+            top: `${annotation.pos.y * EditorDimension}px`,
           })}
           radius="xl"
           className="bg-red-400"
